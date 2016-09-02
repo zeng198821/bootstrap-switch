@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <link href="angular-ui-switch-bak.css" rel="stylesheet" />
+    <link href="../docs/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body{ padding:0; margin:0;}
+        div{ padding:0; margin:0;}
+    </style>
+
+</head>
+<body>
+<span id="switch-state" style="margin: 20px;" class="switch" onclick="changeswitchvalue()">
+    <small></small>
+    <input id="t1" type="checkbox" name="enabled" ng-model="enabled" style="display:none"/>
+    <span class="switch-text"> </span>
+</span>
+<a class="btn btn-primary" onclick="changeswitchvalue()" href="javascript:void(0)">on/off</a>
+
+
+<div style="width: 50px;height: 48px;border:0px;margin:0 auto;padding:0px;background: #6f5499;display: inline-block !important;float: left;">
+    ON
+</div>
+<div style="width: 50px;height: 48px;border:0px;margin:0 auto;padding:0px;background: #2f96b4;display: inline-block;!important;float: left;">
+    Select
+</div>
+<p>
+<div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #6f5499;display: inline-block !important;position:relative;">
+    ON
+</div>
+<div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #2f96b4;display: inline-block;!important;position:relative;">
+    Select
+</div>
+
+
+</p>
+
+<p>
+<div style="width: 100px;border: 1px solid #dfdfdf;height: 50px; margin-left: 50px;overflow: hidden;">
+    <div style="width: 150px;height: 50px;margin:0;padding:0px; display: inline-block; vertical-align: middle;overflow: hidden;margin-left: -50px;-webkit-transition: 0.3s ease-out all;">
+        <div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #6f5499;display: inline-block !important;position:relative;float: left;">
+            ON
+        </div>
+        <div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #2f96b4;display: inline-block;!important;position:relative;float: left;">
+                Select
+        </div>
+        <div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #3c763d;display: inline-block;!important;position:relative;float: left;">
+            OFF
+        </div>
+    </div>
+
+</div>
+
+
+</p>
+
+
+
+<script type="text/javascript">
+    var tmpobj = $("#t1");
+    var tmpswitch = $("#switch-state");
+    function changeswitchvalue() {
+        tmpobj[0].checked = !tmpobj[0].checked;
+        if(tmpobj[0].checked){
+            //tmpswitch.attr('class',"switch checked");
+            $("#switch-state > small").animate({left: '+22px'}, 300);
+            tmpswitch.addClass("checked");
+        }else{
+            //tmpswitch.attr('class',"switch");
+            $("#switch-state > small").animate({left: '0px'}, 500);
+            tmpswitch.removeClass("checked");
+        }
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

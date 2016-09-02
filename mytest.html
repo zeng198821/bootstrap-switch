@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>mytest</title>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <link href="docs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="docs/css/highlight.css" rel="stylesheet">
+    <link href="dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+
+</head>
+<body>
+<a class="btn btn-primary" onclick="changevalue()" href="javascript:void(0)">on/off</a>
+<input type="checkbox" id="t1" checked>
+<div id="aa" onclick="changeswitchvalue()" class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-on bootstrap-switch-id-switch-state bootstrap-switch-animate" style="width: 108px;"><div class="bootstrap-switch-container" style="width: 159px; margin-left: 0px;"><span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 53px;">ON</span><span class="bootstrap-switch-label" style="width: 53px;">&nbsp;</span><span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 53px;">OFF</span><input id="switch-state" type="checkbox" checked=""></div></div>
+
+<script type="text/javascript">
+    var tmpobj = $("#t1");
+    var tmpswitch = $("#aa");
+    var tmpswitchstate = $("#switch-state");
+    function changevalue() {
+        tmpobj[0].checked = !tmpobj[0].checked;
+    }
+    function changeswitchvalue() {
+        tmpswitchstate.checked = !tmpswitchstate.checked;
+        if(tmpswitchstate.checked){
+            tmpswitch.attr('class',"bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-switch-state bootstrap-switch-animate bootstrap-switch-on");
+        }else{
+            tmpswitch.attr('class',"bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-switch-state bootstrap-switch-animate bootstrap-switch-off");
+        }
+
+    }
+    "bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate bootstrap-switch-off";
+    "bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-switch-state bootstrap-switch-animate bootstrap-switch-on";
+    "bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-switch-state bootstrap-switch-animate bootstrap-switch-off";
+    "bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate bootstrap-switch-on";
+
+</script>
+
+</body>
+</html>
