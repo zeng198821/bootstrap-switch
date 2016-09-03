@@ -3,7 +3,8 @@
 <html>
 <head>
     <title>Title</title>
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script src="angular.min.js"></script>
     <link href="angular-ui-switch-bak.css" rel="stylesheet" />
     <link href="../docs/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
@@ -12,69 +13,132 @@
     </style>
 
 </head>
-<body>
-<span id="switch-state" style="margin: 20px;" class="switch" onclick="changeswitchvalue()">
-    <small></small>
-    <input id="t1" type="checkbox" name="enabled" ng-model="enabled" style="display:none"/>
-    <span class="switch-text"> </span>
-</span>
-<a class="btn btn-primary" onclick="changeswitchvalue()" href="javascript:void(0)">on/off</a>
+<body ng-app="myapp">
 
-
-<div style="width: 50px;height: 48px;border:0px;margin:0 auto;padding:0px;background: #6f5499;display: inline-block !important;float: left;">
-    ON
-</div>
-<div style="width: 50px;height: 48px;border:0px;margin:0 auto;padding:0px;background: #2f96b4;display: inline-block;!important;float: left;">
-    Select
-</div>
-<p>
-<div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #6f5499;display: inline-block !important;position:relative;">
-    ON
-</div>
-<div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #2f96b4;display: inline-block;!important;position:relative;">
-    Select
+<div ng-controller="MyController">
+    <span id="switch-state" style="margin: 20px; width:{{ swt.OutWidth }};border-radius:{{ swt.switchHeigth + 'px' }}" class="switch" onclick="changeswitchvalue()">
+        <small id="mySmall" class="btn btn-default"  ng-bind="swt.switchText" my-style style="height: {{ swt.switchHeigth + 'px' }};border-radius:{{ swt.switchHeigth + 'px' }}"></small>
+        <input id="t1" type="checkbox" name="enabled" ng-model="enabled" style="display:none"/>
+        <span class="switch-text"> </span>
+    </span>
+    <a class="btn btn-primary" style="margin-left: 20px;margin-bottom: 5px;display: table;" onclick="changeswitchvalue()" href="javascript:void(0)">ON/OFF</a>
+    <h4 style="margin-left: 20px;display: inline-block;" >Switch Text:</h4><input type="text" style="width: 100px;display: inline-block;" class="form-control" ng-model="swt.switchText"/>
+    <br/>
+    <h4 style="margin-left: 20px;display: inline-block;" >Height:</h4><input type="text" style="width: 100px;display: inline-block;" class="form-control" ng-model="swt.switchHeigth"/>
+    <br/>
+    <h4 style="margin-left: 20px;display: inline-block;" >Width:</h4><input type="text" style="width: 100px;display: inline-block;" class="form-control" ng-model="swt.switchWidth"/>
+    <p>{{ swt }}</p>
 </div>
 
-
-</p>
-
-<p>
-<div style="width: 100px;border: 1px solid #dfdfdf;height: 50px; margin-left: 50px;overflow: hidden;">
-    <div style="width: 150px;height: 50px;margin:0;padding:0px; display: inline-block; vertical-align: middle;overflow: hidden;margin-left: -50px;-webkit-transition: 0.3s ease-out all;">
-        <div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #6f5499;display: inline-block !important;position:relative;float: left;">
-            ON
-        </div>
-        <div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #2f96b4;display: inline-block;!important;position:relative;float: left;">
-                Select
-        </div>
-        <div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #3c763d;display: inline-block;!important;position:relative;float: left;">
-            OFF
-        </div>
-    </div>
-
-</div>
+<small class="btn btn-default" > xxx</small>
 
 
-</p>
+<!--<div style="width: 50px;height: 48px;border:0px;margin:0 auto;padding:0px;background: #6f5499;display: inline-block !important;float: left;">-->
+    <!--ON-->
+<!--</div>-->
+<!--<div style="width: 50px;height: 48px;border:0px;margin:0 auto;padding:0px;background: #2f96b4;display: inline-block;!important;float: left;">-->
+    <!--Select-->
+<!--</div>-->
+<!--<p>-->
+<!--<div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #6f5499;display: inline-block !important;position:relative;">-->
+    <!--ON-->
+<!--</div>-->
+<!--<div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #2f96b4;display: inline-block;!important;position:relative;">-->
+    <!--Select-->
+<!--</div>-->
+
+
+<!--</p>-->
+
+<!--<p>-->
+<!--<div style="width: 100px;border: 1px solid #dfdfdf;height: 50px; margin-left: 50px;overflow: hidden;">-->
+    <!--<div style="width: 150px;height: 50px;margin:0;padding:0px; display: inline-block; vertical-align: middle;overflow: hidden;margin-left: -50px;-webkit-transition: 0.3s ease-out all;">-->
+        <!--<div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #6f5499;display: inline-block !important;position:relative;float: left;">-->
+            <!--ON-->
+        <!--</div>-->
+        <!--<div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #2f96b4;display: inline-block;!important;position:relative;float: left;">-->
+                <!--Select-->
+        <!--</div>-->
+        <!--<div style="width: 50px;height: 48px;margin:0 auto;padding:0px;background: #3c763d;display: inline-block;!important;position:relative;float: left;">-->
+            <!--OFF-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--</div>-->
+
+
+<!--</p>-->
 
 
 
 <script type="text/javascript">
+    var app = angular.module('myapp',[]).controller('MyController',function($scope){
+        $scope.swt = {};
+        $scope.swt.switchText="aa";
+        $scope.swt.switchHeigth = 30;
+        $scope.swt.switchWidth = "" ;
+        $scope.swt.OutWidth ;
+        $scope.$watch('swt.switchText', function ngStyleWatchAction(newStyles, oldStyles) {
+            var tmpw = $("small").width();
+            $scope.swt.OutWidth  = (parseInt(tmpw) + 22 ) + 'px';
+        });
+
+    });
     var tmpobj = $("#t1");
     var tmpswitch = $("#switch-state");
-    function changeswitchvalue() {
-        tmpobj[0].checked = !tmpobj[0].checked;
-        if(tmpobj[0].checked){
-            //tmpswitch.attr('class',"switch checked");
-            $("#switch-state > small").animate({left: '+22px'}, 300);
-            tmpswitch.addClass("checked");
-        }else{
-            //tmpswitch.attr('class',"switch");
-            $("#switch-state > small").animate({left: '0px'}, 500);
-            tmpswitch.removeClass("checked");
+    function AddListeners (){
+        var elemToCheck = document.getElementById("mySmall");
+        if(elemToCheck.addEventListener){ // Firefox, Opera and Safari
+            elemToCheck.addEventListener('DOMAttrModified', OnAttrModified, false);
+        } else if(elemToCheck.attachEvent){  // Internet Explorer
+            elemToCheck.attachEvent('onpropertychange', OnAttrModified);
         }
     }
+    function OnAttrModified (event){
+        if(event)
+                console.log(event);
 
+    }
+    app.directive("myStyle", function (){
+        return {
+            restrict: 'A',
+            scope:{yystyle:"@width"},
+            link: function($scope, element, attrs)
+            {
+
+                $scope.$watch('yystyle', function ngStyleWatchAction(newStyles, oldStyles) {
+                    console.log("newStyles:" + newStyles);
+                    console.log("oldStyles:" + oldStyles);
+//                    if (oldStyles && (newStyles !== oldStyles)) {
+//                        forEach(oldStyles, function(val, style) { element.css(style, '');});
+//                    }
+//                    if (newStyles) element.css(newStyles);
+                });
+//                var el   = element[0],
+//                        attr = el.getAttribute('style');
+//                attrs ='=scope.swt.switchWidth';
+//                el.setAttribute('style', attr);
+//                // We need to watch for changes in the style in case required data is not yet ready when compiling
+//                attrs.$observe('style', function (){
+//                    attr = el.getAttribute('style');
+//                    if(attr){
+//                        el.setAttribute('style', attr);
+//                    }
+//                });
+            }
+//            compile: function(tElem, tAttrs){
+//                console.log(name + ': compile => ' + tElem.html());
+//                return {
+//                    pre: function(scope, iElem, iAttrs){
+//                        console.log(name + ': pre link => ' + iElem.html());
+//                    },
+//                    post: function(scope, iElem, iAttrs){
+//                        console.log(name + ': post link => ' + iElem.html());
+//                    }
+//                }
+//            }
+        };
+    });
 
 
 

@@ -24,8 +24,7 @@
     box-shadow: 0 1px 3px rgba(0,0,0,0.4);
     border-left : 1px solid #dfdfdf;
     border-right : 1px solid #dfdfdf;
-    width: 30px;
-    height: 30px;
+    height: 100%;
     position: absolute;
     top: 0px;
     left: 0px;
