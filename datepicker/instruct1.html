@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>InStuct</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="/scripts/ng/angular.min.js"></script>
+    <link href="/styles/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <style type="text/css">
+        .highlight {
+            padding: 9px 14px;
+            margin-bottom: 14px;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+            border-radius: 4px;
+        }
+        .odd{
+            background-color: #660099;
+        }
+        .even{
+            background-color: #6600FF;
+        }
+        .ng-invalid  {
+            //border: 1px solid #660099;
+        }
+        .ng-valid {
+            //border: 1px solid #e1e1e8;
+        }
+        .sigwarning{
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #8a6d3b;
+            background-color: #fcf8e3;
+            border-color: #faebcc;
+        }
+    </style>
+</head>
+<body>
+<div ng-app="MyApp">
+    <div ng-controller="PcController" style="width: 500px;margin: auto;">
+        <div style="width:100%; margin-left: 50px;"><h1>InStuct Test</h1></div>
+        <!-- ng-switch -->
+        <div class="highlight">
+            <h2>ng-switch</h2>
+            <p> Switch Text :<input type="text" class="form-control" ng-model="switchData.switchKey"
+                                    placeholder="Enter Switch Text "/>
+            </p>
+            <div ng-switch on="switchData.switchKey">
+                <p ng-switch-default>{{switchData.switchDefaultValue}}</p>
+                <h3 ng-switch-when="switchok">{{switchData.switchShowInfo}}</h3>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <!-- ng-repeat -->
+        <div class="highlight">
+            <h2>ng-repeat</h2>
+            <ul>
+                <li ng-repeat="tmpdict in listData" ng-class="{even : !$even ,odd : !$odd}">
+                    {{$index + 1}}、{{tmpdict.dictName}}的区号是:{{tmpdict.dictID}}
+                </li>
+            </ul>
+        </div>
+        <!-- ng-bind -->
+        <div class="highlight">
+            <h2>ng-bind</h2>
+           <P ng-bind="FirstName"></p>
+        </div>
+        <!-- ng-select -->
+        <div class="highlight">
+            <h2>ng-select</h2>
+            <select class="form-control" ng-model="selectedValue" ng-options="tmpdict.dictName for tmpdict in listData">
+               <option value="" >请选择...</option>
+            </select>
+            <h4 ng-show="selectedValue.dictID">
+                您选择的区号是:{{selectedValue.dictID}} 地区是:{{selectedValue.dictName}}
+            </h4>
+        </div>
+        <!-- ng-href -->
+        <div class="highlight">
+            <h2>ng-href</h2>
+            <a ng-href="{{ myhref }}">此处延迟两秒加载</a>
+        </div>
+        <!-- ng-form -->
+        <div class="highlight">
+            <h2>ng-form</h2>
+            <form name="test_form" ng-submit="submitForm()" novalidate name="testform">
+                <div class="form-group">
+                    <label for="city" >City</label>
+                    <select id="city" class="form-control" ng-model="sigFormData.city" ng-options="tmpdict.dictName for tmpdict in listData">
+                        <option value="" >请选择...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email" >Email</label>
+                    <input id="email" type="text" name="email" class="form-control" ng-minlength="5"  ng-class="{sigwarning : test_form.email.$invalid && test_form.email.$dirty}" ng-model="sigFormData.email" placeholder="Enter Your Email" ng-required="true" />
+                    <div> </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" class="form-control" ng-minlength="6"  ng-model="sigFormData.password" placeholder="Enter Your Password"/>
+                    <div class="error" ng-show="test_form.password.$dirty && test_form.password.$invalid">
+                        <small class="alert-warning" ng-show="test_form.password.$error.minlength">您输入的密码少于六位！</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="savepass">Save Password：</label>
+                    <input id="savepass" type="checkbox" name="issaved" class="checkbox-inline" ng-model="sigFormData.issaved"/>
+                </div>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-primary" ng-class="{active : sigFormData.isneed }">
+                        <input type="checkbox" name="isneed" ng-model="sigFormData.isneed" autocomplete="off" checked> Need
+                        <span class="glyphicon glyphicon-star" ng-show="sigFormData.isneed" aria-hidden="true"></span>
+                    </label>
+                </div>
+                <p>{{sigFormData}}</p>
+                <p>{{test_form}}</p>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var myapp = angular.module('MyApp', []).run(function($rootScope,$timeout){
+        $timeout(function () {
+            $rootScope.myhref="www.g.cn";
+        },2000);
+    });
+    myapp.controller('PcController', ['$scope', '$rootScope', '$filter', function ($scope, $rootScope, $filter) {
+                $scope.switchData = {
+                    switchKey: "",
+                    switchDefaultValue: "switchDefault-zeng",
+                    switchShowInfo: "switchDefault-show"
+                };
+                $scope.FirstName = "PengFei";
+                $scope.FirstName = $filter('lowercase')("PengFei");
+                $scope.LastName = "zeng";
+                $scope.Age = 1;
+                $scope.buttonText = "scopetext";
+                $scope.selectedValue={};
+                $scope.listData=[
+                    {dictID:"0571",dictName:"杭州"},
+                    {dictID:"0570",dictName:"衢州"},
+                    {dictID:"0579",dictName:"金华"},
+                    {dictID:"0577",dictName:"温州"}
+                ];
+                $scope.sigFormData = {password:"123"};
+                $scope.getFullName = function () {
+                    $rootScope.rootinfo.a = $scope.FirstName + "  " + $scope.LastName;
+                    return $scope.FirstName + "  " + $scope.LastName;
+                }
+                $scope.submitForm = function () {
+                    console.info($scope.sigFormData );
+                }
+            }]
+    );
+</script>
+</body>
+</html>
