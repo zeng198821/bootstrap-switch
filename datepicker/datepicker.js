@@ -21,13 +21,13 @@ angular.module('myApp.directives', [])
                 if (!ngModel) return;
 
                 var optionsObj = {};
-                console.log("scope"+JSON.stringify(scope));
+                //console.log("scope"+JSON.stringify(scope));
                 console.log(scope);
-                console.log("element"+JSON.stringify(element));
+                //console.log("element"+JSON.stringify(element));
                 console.log(element);
-                console.log("attrs"+JSON.stringify(attrs));
+                //console.log("attrs"+JSON.stringify(attrs));
                 console.log(attrs);
-                console.log("ngModel"+JSON.stringify(ngModel));
+                //console.log("ngModel"+JSON.stringify(ngModel));
                 console.log(ngModel);
                 optionsObj.dateFormat = 'yy-mm-dd';
                 var updateModel = function(dateTxt) {

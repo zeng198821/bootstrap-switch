@@ -20,5 +20,21 @@
 <input id="dateField" datepicker ng-model="$parent.currentDate" select="updateMyText(date)">
 <br/>
 {{myText}} - {{currentDate}}
+<div id="aa">
+<p>Date: <input type="text" id="datepicker"></p>
+</div>
+<script>
+    var tmpdatepicker ;
+    var tmpoptionsObj={};
+    var aa = $("#aa");
+    tmpoptionsObj.dateFormat = 'yy-mm-dd';
+    tmpoptionsObj.onSelect = function(datetext){
+        console.log(datetext);
+    }
+    $( function() {
+        tmpdatepicker = $( "#datepicker" ).datepicker(tmpoptionsObj);
+        console.log(tmpdatepicker);
+    } );
+</script>
 </body>
 </html>
