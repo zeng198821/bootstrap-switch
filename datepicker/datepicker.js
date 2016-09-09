@@ -15,7 +15,8 @@ angular.module('myApp.directives', [])
             // This method needs to be defined and passed in from the
             // passed in to the directive from the view controller
             scope: {
-                select: '&'        // Bind the select function we refer to the right scope
+                select: '&',        // Bind the select function we refer to the right scope
+                aabb:'&'
             },
             link: function(scope, element, attrs, ngModel) {
                 if (!ngModel) return;
