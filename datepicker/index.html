@@ -6,6 +6,7 @@
     <title>AngularJS Datepicker</title>
     <script src="../ng/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link href="/docs/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
     <script src="../ng/angular.min.js"></script>
 
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
@@ -18,6 +19,7 @@
 
 <body ng-controller="MainCtrl">
 <input id="dateField" datepicker ng-model="$parent.currentDate" select="updateMyText(date)">
+<input type="text" class="form-control" ng-model="currentDate">
 <br/>
 {{myText}} - {{currentDate}}
 <div id="aa">
